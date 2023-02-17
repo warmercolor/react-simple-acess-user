@@ -1,0 +1,31 @@
+import "../Welcome/style.css";
+import { useState } from "react";
+
+function User({ setUser, setIsLoggedIn }) {
+    const [userInput, setUserInput] = useState("");
+    
+	const handleLogin = () => {
+        setIsLoggedIn(true);
+        setUser(userInput);
+    };
+    
+    return (
+		<>
+			<div className="duck">🦆</div>
+			<div className="container login">
+				<form onSubmit={(event) => handleLogin(event.preventDefault())}>
+					<input
+						type="text"
+						placeholder="Insira seu nome"
+						value={userInput}
+                        onChange={(event) => setUserInput(event.target.value)}
+                        required
+					/>
+					<button type="submit">Acessar com o nome</button>
+				</form>
+			</div>
+		</>
+	);
+}
+
+export default User;
